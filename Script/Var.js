@@ -20,10 +20,11 @@ let backgroundX = 0;
 let backgroundSpeed = 40;
 
 let player = {
-    speed : 80,
+    speed : 160,
     jump : 2,
     x : 0,
     y : 0,
+    ySpeed : 0,
 };
 
 let camera = {
@@ -32,6 +33,8 @@ let camera = {
 };
 
 let field = {
+    numMapGenerated : 1,
+    line : [],
     floor : [],
     coin : [],
     spike : [],

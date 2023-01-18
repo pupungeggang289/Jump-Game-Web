@@ -27,10 +27,16 @@ function mouseUpTitle(x, y, button) {
         if (pointInsideRectArray(x, y, UITitle.startButton)) {
             scene = 'Game';
             state = 'Countdown';
-            score = 0;
-            countdown = 3;
+            camera.x = 0;
+            camera.y = 0;
             player.x = 40;
             player.y = 280;
+            player.ySpeed = 0;
+
+            score = 0;
+            countdown = 3;
+
+            generateField();
         }
     }
 }

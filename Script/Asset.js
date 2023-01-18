@@ -1,6 +1,7 @@
 let img = {
     player : [new Image(), new Image(), new Image(), new Image(), new Image()],
     coin : [new Image(), new Image(), new Image(), new Image()],
+    floor : new Image(),
     background : new Image(),
     startButton : new Image(),
 };
@@ -16,6 +17,8 @@ function imageLoad() {
     img.coin[1].src = 'Image/Coin02.png';
     img.coin[2].src = 'Image/Coin03.png';
     img.coin[3].src = 'Image/Coin04.png';
+
+    img.floor.src = 'Image/Floor.png';
 
     img.background.src = 'Image/BackGround.png';
 
