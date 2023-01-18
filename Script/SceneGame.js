@@ -7,7 +7,9 @@ let UIGame = {
 function loopGame() {
     if (state === 'Countdown') {
         manageCountDown();
-    } else if (state === 'Running') {
+    }
+    
+    if (state === 'Running') {
         gameTime = (Date.now() - gameStartTime) / 1000;
         moveBackground();
     }
@@ -38,7 +40,7 @@ function displayGame() {
     context.fillText(`${coin}`, UIGame.coinText[0], UIGame.coinText[1]);
 }
 
-function mouseUpGame() {
+function mouseUpGame(x, y, button) {
     if (button === 0) {
         if (state === 'Running') {
             jumpTry();
