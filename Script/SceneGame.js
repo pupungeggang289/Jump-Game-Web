@@ -1,5 +1,6 @@
 let UIGame = {
     titleText : [8, 24],
+    secondText : [8, 56],
     coinIcon : [520, 0],
     coinText : [568, 28],
 };
@@ -36,10 +37,13 @@ function displayGame() {
 
     if (state === 'Countdown') {
         context.fillText(`Starting in ${Math.ceil(countdown)} seconds...`, UIGame.titleText[0], UIGame.titleText[1]);
+        context.fillText(`Click to Jump`, UIGame.secondText[0], UIGame.secondText[1]);
     } else if (state === 'Running') {
         context.fillText(`Score : ${Math.floor(score)}`, UIGame.titleText[0], UIGame.titleText[1]);
+        context.fillText(`Click to Jump`, UIGame.secondText[0], UIGame.secondText[1]);
     } else if (state === 'Gameover') {
         context.fillText(`Game Over!`, UIGame.titleText[0], UIGame.titleText[1]);
+        context.fillText(`Click to Go title.`, UIGame.secondText[0], UIGame.secondText[1]);
     }
 
     drawField();
