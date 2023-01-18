@@ -11,6 +11,7 @@ let delta = 16;
 
 let scene = 'Title';
 let state = '';
+let inputEnabled = true;
 
 let score = 0;
 let coin = 0;

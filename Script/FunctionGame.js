@@ -2,6 +2,7 @@ function generateField() {
     field.line = [[0, 320, 640, 320]];
     field.floor = [[0, 320], [40, 320], [80, 320], [120, 320], [160, 320], [200, 320], [240, 320], [280, 320], [320, 320], [360, 320], [400, 320], [440, 320], [480, 320], [520, 320], [560, 320], [600, 320]];
     field.coin = [[120, 280], [280, 280], [440, 280], [600, 280]];
+    field.spike = [[360, 240]];
     field.numMapGenerated = 1;
 }
 
@@ -11,6 +12,7 @@ function generateFieldAdditional() {
         let tempLine = JSON.parse(JSON.stringify(mapData[seed].line));
         let tempFloor = JSON.parse(JSON.stringify(mapData[seed].floor));
         let tempCoin = JSON.parse(JSON.stringify(mapData[seed].coin));
+        let tempSpike = JSON.parse(JSON.stringify(mapData[seed].spike));
 
         for (let i = 0; i < tempLine.length; i++) {
             tempLine[i][0] += field.numMapGenerated * 640;
@@ -25,9 +27,14 @@ function generateFieldAdditional() {
             tempCoin[i][0] += field.numMapGenerated * 640;
         }
 
+        for (let i = 0; i <tempSpike.length; i++) {
+            tempSpike[i][0] += field.numMapGenerated * 640;
+        }
+
         field.line = field.line.concat(tempLine);
         field.floor = field.floor.concat(tempFloor);
         field.coin = field.coin.concat(tempCoin);
+        field.spike = field.spike.concat(tempSpike);
 
         field.numMapGenerated += 1;
     }
@@ -148,5 +155,25 @@ function jumpTry() {
 function gameOverCheck() {
     if (player.y >= 360) {
         state = 'Gameover';
+        inputEnabled = false;
+        inputCountdown = 1;
+    }
+
+    let i = 0;
+
+    for (let i = 0; i < field.spike.length; i++) {
+        if (Math.abs(player.x - field.spike[i][0]) < 40 && Math.abs(player.y - field.spike[i][1]) < 80) {
+            state = 'Gameover';
+            inputEnabled = false;
+            inputCountdown = 1;
+        }
+    }
+}
+
+function gameOverCountDown() {
+    if (inputCountdown < 0) {
+        inputEnabled = true;
+    } else {
+        inputCountdown -= delta / 1000;
     }
 }

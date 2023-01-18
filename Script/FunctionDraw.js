@@ -9,6 +9,10 @@ function drawField() {
         context.drawImage(img.floor, Math.floor(field.floor[i][0] - camera.x), Math.floor(field.floor[i][1] - camera.y));
     }
 
+    for (let i = 0; i < field.spike.length; i++) {
+        context.drawImage(img.spike, Math.floor(field.spike[i][0] - camera.x), Math.floor(field.spike[i][1] - camera.y));
+    }
+
     if (state === 'Countdown' || state === 'Gameover') {
         for (let i = 0; i < field.coin.length; i++) {
             context.drawImage(img.coin[0], Math.floor(field.coin[i][0] - camera.x), Math.floor(field.coin[i][1] - camera.y));

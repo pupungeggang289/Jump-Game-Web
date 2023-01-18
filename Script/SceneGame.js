@@ -23,6 +23,10 @@ function loopGame() {
         deleteOutOfMap();
     }
 
+    if (state === 'Gameover') {
+        gameOverCountDown();
+    }
+
     displayGame();
 }
 
@@ -42,7 +46,7 @@ function displayGame() {
         context.fillText(`Score : ${Math.floor(score)}`, UIGame.titleText[0], UIGame.titleText[1]);
         context.fillText(`Click to Jump`, UIGame.secondText[0], UIGame.secondText[1]);
     } else if (state === 'Gameover') {
-        context.fillText(`Game Over!`, UIGame.titleText[0], UIGame.titleText[1]);
+        context.fillText(`Score : ${Math.floor(score)} Game Over!`, UIGame.titleText[0], UIGame.titleText[1]);
         context.fillText(`Click to Go title.`, UIGame.secondText[0], UIGame.secondText[1]);
     }
 
@@ -54,12 +58,14 @@ function displayGame() {
 }
 
 function mouseUpGame(x, y, button) {
-    if (button === 0) {
-        if (state === 'Running') {
-            jumpTry();
-        } else if (state === 'Gameover') {
-            scene = 'Title';
-            state = '';
+    if (inputEnabled === true) {
+        if (button === 0) {
+            if (state === 'Running') {
+                jumpTry();
+            } else if (state === 'Gameover') {
+                scene = 'Title';
+                state = '';
+            }
         }
     }
 }
