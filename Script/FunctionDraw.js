@@ -21,8 +21,6 @@ function drawField() {
             frameNum = 0;
         }
 
-        console.log(frameNum);
-
         for (let i = 0; i < field.coin.length; i++) {
             context.drawImage(img.coin[frameNum], Math.floor(field.coin[i][0] - camera.x), Math.floor(field.coin[i][1] - camera.y));
         }
